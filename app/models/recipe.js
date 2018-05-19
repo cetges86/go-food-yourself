@@ -5,5 +5,12 @@ module.exports = function(sequelize, DataTypes) {
       link: DataTypes.STRING,
       ImgURL: DataTypes.STRING
     });
+
+    Recipe.associate = function (models) {
+      Recipe.belongsToMany(models.Ingredients, {
+        through: {model: models.Association},
+        foreignKey: 'ingredient_id'
+      });
+    };
     return Recipe;
   };

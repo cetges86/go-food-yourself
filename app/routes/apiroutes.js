@@ -17,7 +17,7 @@ module.exports = function (app) {
     // Write code here to retrieve all of the todos from the database and res.json them
     // back to the user
     db.Recipe.findAll().then(function (results) {
-      console.log("todos:" + JSON.stringify(results))
+      console.log("recipes:" + JSON.stringify(results))
 
       res.json(results);
     })
