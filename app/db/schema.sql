@@ -60,7 +60,7 @@ INSERT INTO Ingredients (name, category, important)
 VALUES ("Couscous", "Grains", true);
 
 INSERT INTO Ingredients (name, category, important)
-VALUES ("Flour tortillas", "Grains", true);
+VALUES ("Flour tortilla", "Grains", true);
 
 INSERT INTO Ingredients (name, category, important)
 VALUES ("Noodles", "Grains", true);
