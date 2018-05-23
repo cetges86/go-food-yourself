@@ -4,6 +4,8 @@
 
 // Dependencies
 // =============================================================
+const express = require("express");
+
 var path = require("path");
 
 // Routes
@@ -14,12 +16,12 @@ module.exports = function(app) {
 
   // index route loads view.html
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/index.html"));
+    res.sendFile(path.join(__dirname, "../public/assets/index.html"));
   });
 
   // cms route loads cms.html
-  app.get("/cms", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/newrecipe.html"));
+  app.get("/add-recipe ", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/assets/newrecipe.html"));
   });
 
   // blog route loads blog.html

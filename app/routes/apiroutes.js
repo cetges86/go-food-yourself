@@ -4,9 +4,12 @@
 
 // Dependencies
 // =============================================================
+const express = require('express')
 
 // Requiring our Todo model
 var db = require("../models");
+const router = express.Router();
+const app = express();
 
 // Routes
 // =============================================================
@@ -16,9 +19,7 @@ module.exports = function (app) {
   app.get("/api/ingredients", function (req, res) {
     // Write code here to retrieve all of the todos from the database and res.json them
     // back to the user
-    db.Recipe.findAll().then(function (results) {
-      console.log("recipes:" + JSON.stringify(results))
-
+    db.Ingredients.findAll().then(function (results) {
       res.json(results);
     })
   });
@@ -27,13 +28,8 @@ module.exports = function (app) {
   app.post("/api/recipe", function (req, res) {
     // Write code here to create a new todo and save it to the database
     // and then res.json back the new todo to the user
-    db.Recipe.create({
-        //change to recipe data
-      text: req.body.text,
-      complete: req.body.complete
-    }).then(function (results) {
-      console.log("Recipe:" + todos)
-      res.status(201).end();
+    db.Recipe.create((req.body)).then(function (results) {
+      res.json(results);
     })
 
   });

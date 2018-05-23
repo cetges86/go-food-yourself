@@ -53,9 +53,6 @@ INSERT INTO Ingredients (name, category, important)
 VALUES ("Tuna", "Protein", true);
 
 INSERT INTO Ingredients (name, category, important)
-VALUES ("Cheddar Cheese", "Dairy", true);
-
-INSERT INTO Ingredients (name, category, important)
 VALUES ("Bread", "Grains", true);
 
 INSERT INTO Ingredients (name, category, important)
@@ -72,12 +69,6 @@ VALUES ("Corn", "Grains", true);
 
 INSERT INTO Ingredients (name, category, important)
 VALUES ("Oats", "Grains", true);
-
-INSERT INTO Ingredients (name, category, important)
-VALUES ("Cheddar Cheese", "Dairy", true);
-
-INSERT INTO Ingredients (name, category, important)
-VALUES ("Cheddar Cheese", "Dairy", true);
 
 INSERT INTO Ingredients (name, category, important)
 VALUES ("Asparagus", "Produce", true);
@@ -251,7 +242,7 @@ INSERT INTO Ingredients (name, category, important)
 VALUES ("Couscous", "Grains", true);
 
 INSERT INTO Ingredients (name, category, important)
-VALUES ("Flour tortillas", "Grains", true);
+VALUES ("Flour tortilla", "Grains", true);
 
 INSERT INTO Ingredients (name, category, important)
 VALUES ("Noodles", "Grains", true);
