@@ -1,7 +1,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
-const db = require("./models");
+const db = require("./app/models");
 
 
 var PORT = process.env.PORT || 8080;
