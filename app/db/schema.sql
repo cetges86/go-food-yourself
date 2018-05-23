@@ -50,9 +50,9 @@ INSERT INTO Ingredients (name, category, important)
 VALUES ("Salmon", "Protein", true);
 
 INSERT INTO Ingredients (name, category, important)
-
 VALUES ("Tuna", "Protein", true);
 
+INSERT INTO Ingredients (name, category, important)
 VALUES ("Cheddar Cheese", "Dairy", true);
 
 INSERT INTO Ingredients (name, category, important)
@@ -64,7 +64,7 @@ VALUES ("White Rice", "Grains", true);
 INSERT INTO Ingredients (name, category, important)
 VALUES ("Brown Rice", "Grains", true);
 
- INSERT INTO Ingredients (name, category, important)
+INSERT INTO Ingredients (name, category, important)
 VALUES ("Rice", "Grains", true);
 
 INSERT INTO Ingredients (name, category, important)
@@ -75,6 +75,27 @@ VALUES ("Oats", "Grains", true);
 
 INSERT INTO Ingredients (name, category, important)
 VALUES ("Cheddar Cheese", "Dairy", true);
+
+INSERT INTO Ingredients (name, category, important)
+VALUES ("Cheddar Cheese", "Dairy", true);
+
+INSERT INTO Ingredients (name, category, important)
+VALUES ("Asparagus", "Produce", true);
+
+INSERT INTO Ingredients (name, category, important)
+VALUES ("Cabbage", "Produce", true);
+
+INSERT INTO Ingredients (name, category, important)
+VALUES ("Garlic", "Produce", true);
+
+INSERT INTO Ingredients (name, category, important)
+VALUES ("Garlic Scapes", "Produce", true);
+
+INSERT INTO Ingredients (name, category, important)
+VALUES ("Green Onions", "Produce", true);
+
+INSERT INTO Ingredients (name, category, important)
+VALUES ("Lettuce", "Produce", true);
 
 INSERT INTO Ingredients (name, category, important)
 VALUES ("Bay Leaf", "Spices/Seasoning/Condiments", true);
@@ -258,5 +279,6 @@ VALUES ("Grits", "Grains", true);
 
 INSERT INTO Ingredients (name, category, important)
 VALUES ("Pitas", "Grains", true);
+
 
 
