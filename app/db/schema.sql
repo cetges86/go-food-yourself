@@ -12,3 +12,24 @@ VALUES ("Butter", "Dairy", true);
 
 INSERT INTO Ingredients (name, category, important)
 VALUES ("Cheddar Cheese", "Dairy", true);
+
+INSERT INTO Ingredients (name, category, important)
+VALUES ("Asparagus", "Produce", true);
+
+INSERT INTO Ingredients (name, category, important)
+VALUES ("Cabbage", "Produce", true);
+
+INSERT INTO Ingredients (name, category, important)
+VALUES ("Garlic", "Produce", true);
+
+INSERT INTO Ingredients (name, category, important)
+VALUES ("Garlic Scapes", "Produce", true);
+
+INSERT INTO Ingredients (name, category, important)
+VALUES ("Green Onions", "Produce", true);
+
+INSERT INTO Ingredients (name, category, important)
+VALUES ("Lettuce", "Produce", true);
+
+
+
