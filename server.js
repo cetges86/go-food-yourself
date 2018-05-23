@@ -3,7 +3,6 @@ var bodyParser = require("body-parser");
 var path = require("path");
 const db = require("./app/models");
 
-
 var PORT = process.env.PORT || 8080;
 
 var app = express();
@@ -20,8 +19,6 @@ app.use(bodyParser.json());
 // Set Handlebars.
 var exphbs = require("express-handlebars");
 
-// app.engine("handlebars", exphbs({ defaultLayout: "main"}));
-
 app.engine('handlebars', exphbs({
   defaultLayout: 'main',
   layoutsDir: path.join(__dirname, "/app/views/layouts/"),
@@ -33,10 +30,8 @@ app.set('views', path.join(__dirname, "/app/views"));
 // app.set('partials', path.join(__dirname, "/app/views/partials"))
 
 // Import routes and give the server access to them.
-//var routes = require("./app/controllers/burger_controller.js");
-const routes = require("./app/routes/apiroutes");
-
-app.use(routes);
+require("./app/routes/apiroutes")(app);
+require("./app/routes/htmlroutes")(app);
 
 // Start our server so that it can begin listening to client requests.
 
