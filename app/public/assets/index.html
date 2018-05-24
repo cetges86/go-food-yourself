@@ -4,113 +4,117 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Go Food Yourself</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
- <!-- parallax -->
-  <div id="index-banner" class="parallax-container">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <br><br>
-        <h1 class="header center teal-text text-lighten-2">Go Food Yourself</h1>
-        <div class="row center">
-        </div>
-        <div class="row center">
-        </div>
-        <br><br>
-
-      </div>
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+</head>
+<!-- parallax -->
+<div id="index-banner" class="parallax-container">
+  <div class="section no-pad-bot">
+    <div class="container">
+      <br>
+      <br>
+      <h1 class="header center teal-text text-lighten-2">Go Food Yourself</h1>
     </div>
-    <div class="parallax"><img src="images/backgroundapple.jpg" alt="Unsplashed background img 1"></div>
   </div>
-  
-  <body>
+  <div class="parallax">
+    <img src="images/backgroundapple.jpg" alt="Unsplashed background img 1">
+  </div>
+</div>
+
+<body>
 
   <!-- Autocomplete  -->
   <!-- Protein input field -->
   <div class="container">
-  <div class="row"></div>
-  <div class="col s12">
-    <div class="row">
-      <div class="input-field col s10">
-        <input type="text" id="autocomplete-input" class="autocomplete">
-        <label for="autocomplete-input">Protein</label>
+    <div class="row"></div>
+    <div class="col s12">
+      <div class="row">
+        <div class="input-field col s10">
+          <input type="text" id="autocomplete-input" class="autocomplete">
+          <label for="autocomplete-input">Protein</label>
+        </div>
+        <a class="btn-floating btn-small waves-effect waves-light red">
+          <i class="material-icons">+</i>
+        </a>
       </div>
-      <a class="btn-floating btn-small waves-effect waves-light red">
-        <i class="material-icons">+</i>
-      </a>
     </div>
   </div>
   </div>
-        </div>
   <!-- Dairy input field -->
   <div class="container">
-  <div class="row"></div>
-  <div class="col s12">
-    <div class="row">
-      <div class="input-field col s10">
-        <input type="text" id="autocomplete-input" class="autocomplete">
-        <label for="autocomplete-input">Dairy</label>
+    <div class="row"></div>
+    <div class="col s12">
+      <div class="row">
+        <div class="input-field col s10">
+          <input type="text" id="autocomplete-input" class="autocomplete">
+          <label for="autocomplete-input">Dairy</label>
+        </div>
+        <a class="btn-floating btn-small waves-effect waves-light red">
+          <i class="material-icons">+</i>
+        </a>
       </div>
-      <a class="btn-floating btn-small waves-effect waves-light red">
-        <i class="material-icons">+</i>
-      </a>
     </div>
   </div>
   </div>
-</div>
   <!-- Produce  -->
   <div class="container">
-  <div class="row"></div>
-  <div class="col s12">
-    <div class="row">
-      <div class="input-field col s10">
-        <input type="text" id="autocomplete-input" class="autocomplete">
-        <label for="autocomplete-input">Produce</label>
+    <div class="row"></div>
+    <div class="col s12">
+      <div class="row">
+        <div class="input-field col s10">
+          <input type="text" id="autocomplete-input" class="autocomplete">
+          <label for="autocomplete-input">Produce</label>
+        </div>
+        <a class="btn-floating btn-small waves-effect waves-light red">
+          <i class="material-icons">+</i>
+        </a>
       </div>
-      <a class="btn-floating btn-small waves-effect waves-light red">
-        <i class="material-icons">+</i>
-      </a>
     </div>
   </div>
   </div>
-</div>
   <!-- Starches -->
   <div class="container">
-<div class="row"></div>
-  <div class="col s12">
-    <div class="row">
-      <div class="input-field col s10">
-        <input type="text" id="autocomplete-input" class="autocomplete">
-        <label for="autocomplete-input">Starches</label>
+    <div class="row"></div>
+    <div class="col s12">
+      <div class="row">
+        <div class="input-field col s10">
+          <input type="text" id="autocomplete-input" class="autocomplete">
+          <label for="autocomplete-input">Starches</label>
+        </div>
+        <a class="btn-floating btn-small waves-effect waves-light red">
+          <i class="material-icons">+</i>
+        </a>
       </div>
-      <a class="btn-floating btn-small waves-effect waves-light red">
-        <i class="material-icons">+</i>
-      </a>
     </div>
   </div>
   </div>
-</div>
-   <!-- Spices/condiments -->
-   <div class="container">
-<div class="row"></div>
-<div class="col s12">
-  <div class="row">
-    <div class="input-field col s10">
-      <input type="text" id="autocomplete-input" class="autocomplete">
-      <label for="autocomplete-input">Spices/Condiments</label>
+  <!-- Spices/condiments -->
+  <div class="container">
+    <div class="row"></div>
+    <div class="col s12">
+      <div class="row">
+        <div class="input-field col s10">
+          <input type="text" id="autocomplete-input" class="autocomplete">
+          <label for="autocomplete-input">Spices/Condiments</label>
+        </div>
+        <a class="btn-floating btn-small waves-effect waves-light red">
+          <i class="material-icons">+</i>
+        </a>
+      </div>
     </div>
-    <a class="btn-floating btn-small waves-effect waves-light red">
-      <i class="material-icons">+</i>
-    </a>
   </div>
-</div>
-</div>
 </body>
 
+
+</html>
+</body>
 
 </html>
