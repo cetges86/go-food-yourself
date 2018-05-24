@@ -3,6 +3,8 @@ module.exports = function (sequelize, DataTypes) {
     name: DataTypes.STRING,
     category: DataTypes.STRING,
     important: DataTypes.BOOLEAN
+  }, {
+    timestamps: false
   });
 
   Ingredient.associate = function (models) {
