@@ -24,6 +24,14 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/assets/newrecipe.html"));
   });
 
+  app.get("/app/public/assets/css/style.css", function (req, res) {
+    res.sendFile(process.cwd() + "/app/public/assets/css/" + "style.css");
+  });
+  
+  app.get("/app/public/assets/js/main.js", function (req, res) {
+    res.sendFile(process.cwd() + "/app/public/assets/js/" + "main.js");
+  });
+
   // blog route loads blog.html
 //   app.get("/blog", function(req, res) {
 //     res.sendFile(path.join(__dirname, "../public/blog.html"));

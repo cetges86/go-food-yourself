@@ -4,6 +4,8 @@ module.exports = function(sequelize, DataTypes) {
       numberOfIng: DataTypes.INTEGER,
       link: DataTypes.STRING,
       ImgURL: DataTypes.STRING
+    }, {
+      timestamps: false
     });
 
     Recipe.associate = function (models) {

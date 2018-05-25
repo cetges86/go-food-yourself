@@ -1,5 +1,9 @@
 module.exports = function (sequelize, DataTypes) {
-    const Association = sequelize.define("Association",{})
+    const Association = sequelize.define("Association",{},
+        {
+            timestamps: false
+          }
+    )
 
     // Association.associate = function (models) {
     //     console.log(models);
