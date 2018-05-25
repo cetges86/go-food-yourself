@@ -10,7 +10,7 @@ module.exports = function (sequelize, DataTypes) {
   Ingredient.associate = function (models) {
     console.log(models)
     Ingredient.belongsToMany(models.Recipe, {
-      through: {model: models.Association},
+      through: 'ingredient_recipes',
       foreignKey: 'recipe_id'
     });
   };
