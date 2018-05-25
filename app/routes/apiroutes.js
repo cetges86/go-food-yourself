@@ -27,7 +27,7 @@ module.exports = function (app) {
   app.get("/api/recipe", function (req, res) {
     // Write code here to retrieve all of the todos from the database and res.json them
     // back to the user
-    db.Recipe.findAll().then(function (results) {
+    db.Recipe.findAll({ include: [{ model: db.Ingredients }] }).then(function (results) {
       res.json(results);
     })
   });
@@ -36,9 +36,15 @@ module.exports = function (app) {
   app.post("/api/recipe", function (req, res) {
     // Write code here to create a new todo and save it to the database
     // and then res.json back the new todo to the user
-    db.Recipe.create((req.body)).then(function (results) {
-      res.json(results);
+
+    console.log(req.body);
+    const ingredients = req.body.Ingredients;
+    db.Recipe.create(req.body, { include: { model: db.Ingredients } }).then(function (recipe) {
+      res.json(recipe);
     })
+      .catch(err => {
+        console.log(err);
+      });
 
   });
 
@@ -58,7 +64,7 @@ module.exports = function (app) {
   // PUT route for updating todos. We can get the updated todo data from req.body
   app.put("/api/recipe", function (req, res) {
     db.Recipe.update({
-        //needs to be changed for recipe data
+      //needs to be changed for recipe data
       text: req.body.text,
       complete: req.body.complete
     }, {
