@@ -54,11 +54,11 @@ VALUES ("Salmon", "Protein", true);
 INSERT INTO Ingredients (name, category, important)
 VALUES ("Tuna", "Protein", true);
 
+-- Produce  
 INSERT INTO Ingredients (name, category, important)
 VALUES ("Red Cabbage", "Produce", true);
 
 INSERT INTO Ingredients (name, category, important)
-<<<<<<< HEAD
 VALUES ("Garlic", "Produce", true);
 
 INSERT INTO Ingredients (name, category, important)
@@ -66,21 +66,6 @@ VALUES ("Garlic Scapes", "Produce", true);
 
 INSERT INTO Ingredients (name, category, important)
 VALUES ("Green Onions", "Produce", true);
-=======
-VALUES ("White Rice", "Grains", true);
-
-INSERT INTO Ingredients (name, category, important)
-VALUES ("Brown Rice", "Grains", true);
-
-INSERT INTO Ingredients (name, category, important)
-VALUES ("Rice", "Grains", true);
-
-INSERT INTO Ingredients (name, category, important)
-VALUES ("Corn", "Grains", true);
-
-INSERT INTO Ingredients (name, category, important)
-VALUES ("Oats", "Grains", true);
->>>>>>> 288197ae818a3b7477b581021841739ab2ed1988
 
 INSERT INTO Ingredients (name, category, important)
 VALUES ("Lettuce", "Produce", true);

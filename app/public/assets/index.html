@@ -4,117 +4,183 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Go Food Yourself</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+  <link rel="stylesheet" type="text/html" media="screen" href="css/style.css" />
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-  <!-- JQuery -->
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-    crossorigin="anonymous"></script>
-  <script src="main.js"></script>
+  <!-- main javascript file -->
+  <!-- <script src="main.js"></script> -->
+
 </head>
-<!-- parallax -->
-<div id="index-banner" class="parallax-container">
-  <div class="section no-pad-bot">
-    <div class="container">
-      <br>
-      <br>
-      <h1 class="header center teal-text text-lighten-2">Go Food Yourself</h1>
-    </div>
-  </div>
-  <div class="parallax">
-    <img src="images/backgroundapple.jpg" alt="Unsplashed background img 1">
-  </div>
-</div>
 
 <body>
+  <!-- parallax -->
+  <!-- <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br>
+        <br>
+        <h1 class="header center teal-text text-lighten-2">Go Food Yourself</h1>
+        <div class="row center">
+        </div>
+        <div class="row center">
+        </div>
+        <br>
+        <br>
+
+      </div>
+    </div>
+    <div class="parallax">
+      <img src="images/backgroundapple.jpg" alt="Unsplashed background img 1">
+    </div>
+  </div> -->
 
   <!-- Autocomplete  -->
   <!-- Protein input field -->
-  <div class="container">
-    <div class="row"></div>
-    <div class="col s12">
-      <div class="row">
-        <div class="input-field col s10">
-          <input type="text" id="autocomplete-input" class="autocomplete">
-          <label for="autocomplete-input">Protein</label>
-        </div>
-        <a class="btn-floating btn-small waves-effect waves-light red">
-          <i class="material-icons">+</i>
-        </a>
-      </div>
-    </div>
-  </div>
+  <div class="container protein">
   </div>
   <!-- Dairy input field -->
   <div class="container">
-    <div class="row"></div>
-    <div class="col s12">
-      <div class="row">
-        <div class="input-field col s10">
-          <input type="text" id="autocomplete-input" class="autocomplete">
-          <label for="autocomplete-input">Dairy</label>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s3">
+            <label>Materialize Select</label>
+          </div>
+          <div class="row">
+            <div class="row">
+              <select multiple>
+                <option value="" disabled selected>Select your Dairy</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+            </div>
+          </div>
         </div>
-        <a class="btn-floating btn-small waves-effect waves-light red">
-          <i class="material-icons">+</i>
-        </a>
-      </div>
+      </form>
     </div>
-  </div>
   </div>
   <!-- Produce  -->
   <div class="container">
-    <div class="row"></div>
-    <div class="col s12">
-      <div class="row">
-        <div class="input-field col s10">
-          <input type="text" id="autocomplete-input" class="autocomplete">
-          <label for="autocomplete-input">Produce</label>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s3">
+            <label>Materialize Select</label>
+          </div>
+          <div class="row">
+            <div class="row">
+              <select multiple>
+                <option value="" disabled selected>Select your Produce</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+            </div>
+          </div>
         </div>
-        <a class="btn-floating btn-small waves-effect waves-light red">
-          <i class="material-icons">+</i>
-        </a>
-      </div>
+      </form>
     </div>
   </div>
-  </div>
-  <!-- Starches -->
+  <!-- Grains -->
   <div class="container">
-    <div class="row"></div>
-    <div class="col s12">
-      <div class="row">
-        <div class="input-field col s10">
-          <input type="text" id="autocomplete-input" class="autocomplete">
-          <label for="autocomplete-input">Starches</label>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s3">
+            <label>Materialize Select</label>
+          </div>
+          <div class="row">
+            <div class="row">
+              <select multiple>
+                <option value="" disabled selected>Select your Grain</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+            </div>
+          </div>
         </div>
-        <a class="btn-floating btn-small waves-effect waves-light red">
-          <i class="material-icons">+</i>
-        </a>
-      </div>
+      </form>
     </div>
   </div>
-  </div>
-  <!-- Spices/condiments -->
+  <!-- Spices/condiments/seasonings -->
   <div class="container">
-    <div class="row"></div>
-    <div class="col s12">
-      <div class="row">
-        <div class="input-field col s10">
-          <input type="text" id="autocomplete-input" class="autocomplete">
-          <label for="autocomplete-input">Spices/Condiments</label>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s3">
+            <label>Materialize Select</label>
+          </div>
+          <div class="row">
+            <div class="row">
+              <select multiple>
+                <option value="" disabled selected>Select your Spices/Herbs/Condiments</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+            </div>
+          </div>
         </div>
-        <a class="btn-floating btn-small waves-effect waves-light red">
-          <i class="material-icons">+</i>
-        </a>
-      </div>
+      </form>
     </div>
   </div>
-</body>
+
+  <script>
+
+    $(document).ready(function () {
+      $('select').formSelect();
+    });
+
+    $.get("/api/ingredients", function (data) {
+
+      for (var i = 0; i < data.length; i++) {
+        category = data[i].category;
+        if (category === "protein") {
+          for (var j = 0; j < 12; j++){
+          var proteinSelector = $('<div>')
+          proteinSelector.addClass('row', j);
+
+          proteinSelector.append(`<form class="col s12">
+        <div class="row">
+          <div class="input-field col s3">
+            <label>Materialize Select</label>
+            </div>
+            <div class="row">
+              <div class = "row">
+            <select multiple>
+                <option value="" disabled selected>Select your Protein</option>
+              <option value="${j}">${data.name}</option>
+            </select>
+            </div>
+          </div>
+        </div>
+      </form>
+    `);
+    
+    proteinSelector.appendTo('.container protein');
+    };
+        }
+        console.log(category);
+        } 
+        
+      }
+    )
+  
 
 
-</html>
+
+  </script>
+
 </body>
+
 
 </html>
