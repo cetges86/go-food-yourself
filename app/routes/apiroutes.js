@@ -32,6 +32,39 @@ module.exports = function (app) {
     })
   });
 
+  app.get("api/search", function (req, res) {
+
+    //req.body is our object with our form data, stored in ingredients array
+
+    //[ingredient names]
+    let ings = ["cheese", "bread", "butter"];
+    let ids = [];
+
+    ings.forEach(function (name) {
+      db.Ingredients.findAll({
+        where: {
+          name: name
+        }
+      }).then(function (id) {
+        ids.push(id);
+        res.json();
+      })
+    })
+    //ids = [1, 4, 5]
+
+    ids.forEach(function(ingId){
+      db.association.findAll(
+        {where: {
+          ingId:db.Recipe.id
+        }}
+      ).then((results)=>{
+        res.json(results)
+      })
+    })
+
+
+  });
+
   // POST route for saving a new todo. We can create todo with the data in req.body
   app.post("/api/recipe", function (req, res) {
     // Write code here to create a new todo and save it to the database
@@ -39,7 +72,16 @@ module.exports = function (app) {
 
     console.log(req.body);
     const ingredients = req.body.Ingredients;
-    db.Recipe.create(req.body, { include: { model: db.Ingredients } }).then(function (recipe) {
+    console.log(ingredients)
+
+    db.Recipe.create(req.body, {
+      include: [
+        {
+          association: db.Ingredients,
+          // model: db.Ingredients,
+          include: db.Ingredients
+        }]
+    }).then(function (recipe) {
       res.json(recipe);
     })
       .catch(err => {
