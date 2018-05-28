@@ -6,11 +6,11 @@ $(document).ready(function(){
 
     let ings = [{name:"Cheese"}, {name:"Bread"}, {name:"Butter"}];
   
-
-    $.get("/", ings).
-    done(function(data){
-      console.log(data)
-      $('#results').html("<p> " + data + "</p>")
+    console.log(ings)
+    $.get("/search/", ings).
+    then(function(res){
+      console.log(res)
+      $('#results').append("<h1> " + res[0].name + "</h1>")
     })
 
   })

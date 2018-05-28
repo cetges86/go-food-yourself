@@ -32,41 +32,42 @@ module.exports = function (app) {
     })
   });
 
-  app.get("/:name", function (req, res) {
+  app.get("/search", function (req, res) {
     //req.body is our object with our form data, stored in ingredients array
 
     //[ingredient names]
-    let ings = req.body.name;
-    let ids = [];
-
+    let results = [];
+    let finalData = [];
+    let ings = (Object.keys(req.query));
     console.log(ings);
 
     ings.forEach(function (name) {
       db.Ingredients.findAll({
         where: {
           name: name
+        },
+      }).then(function (results) {
+        console.log(results[0].dataValues.id)
+        for (let i = 0; i < results.length; i++) {
+          db.Recipe.findOne({
+            include: [{
+              model: db.Ingredients,
+              through: {
+                attributes: ['ingredient_id'],
+                where: { recipe_id: results[i].dataValues.id }
+              },
+            }]
+          }).then((recipes) => {
+            // console.log(JSON.stringify(recipes, 2, null));
+            finalData.push(recipes);
+            console.log("final recipes array " + JSON.stringify(finalData));
+            console.log("----------------");
+            return finalData;
+          })
         }
-      }).then(function (id) {
-        ids.push(id);
       })
-    }).then(() => {
-      ids.forEach(function (ingId) {
-        db.association.findAll(
-          {
-            where: {
-              ingId: db.Recipe.id
-            }
-          }
-        ).then((results) => {
-          res.json(results)
-        })
-      })
-    }
-    //ids = [1, 4, 5]
-
-
-    )
-  });
+    })
+  })
 
   // POST route for saving a new todo. We can create todo with the data in req.body
   app.post("/api/recipe", function (req, res) {
