@@ -35,7 +35,6 @@ module.exports = function (app) {
   app.get("/search", function (req, res) {
     //req.body is our object with our form data, stored in ingredients array
 
-    //[ingredient names]
     let results = [];
     let finalData = [];
     let ings = (Object.keys(req.query));
@@ -49,7 +48,7 @@ module.exports = function (app) {
       }).then(function (results) {
         console.log(results[0].dataValues.id)
         for (let i = 0; i < results.length; i++) {
-          db.Recipe.findOne({
+          db.Recipe.findAll({
             include: [{
               model: db.Ingredients,
               through: {
@@ -62,12 +61,12 @@ module.exports = function (app) {
             finalData.push(recipes);
             console.log("final recipes array " + JSON.stringify(finalData));
             console.log("----------------");
-            return finalData;
+            res.json(recipes);
           })
         }
-      })
-    })
-  })
+      });
+    });
+  });
 
   // POST route for saving a new todo. We can create todo with the data in req.body
   app.post("/api/recipe", function (req, res) {
