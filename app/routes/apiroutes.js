@@ -32,6 +32,45 @@ module.exports = function (app) {
     })
   });
 
+  app.get("/search", function (req, res) {
+    //req.body is our object with our form data, stored in ingredients array
+    const promises = []
+    let results = [];
+    let finalData = [];
+    let ings = (Object.keys(req.query));
+    console.log(ings);
+
+    ings.forEach(function (name) {
+      const query = db.Ingredients.findAll({
+        where: {
+          name: name
+        },
+      }).then(function (results) {
+        console.log(results[0].dataValues.id)
+        for (let i = 0; i < results.length; i++) {
+          const query2 = db.Recipe.findAll({
+            include: [{
+              model: db.Ingredients,
+              through: {
+                attributes: ['ingredient_id'],
+                where: { recipe_id: results[i].dataValues.id }
+              },
+            }]
+          }).then((recipes) => {
+            // console.log(JSON.stringify(recipes, 2, null));
+            finalData.push(recipes);
+            console.log("final recipes array " + JSON.stringify(finalData));
+            console.log("----------------");
+            res.json(recipes);
+            return recipes;
+            //promises.push(query2);
+          })
+        }
+      });
+    });
+    
+  });
+
   // POST route for saving a new todo. We can create todo with the data in req.body
   app.post("/api/recipe", function (req, res) {
     // Write code here to create a new todo and save it to the database
@@ -39,7 +78,18 @@ module.exports = function (app) {
 
     console.log(req.body);
     const ingredients = req.body.Ingredients;
-    db.Recipe.create(req.body, { include: { model: db.Ingredients } }).then(function (recipe) {
+    console.log(ingredients)
+
+    db.Recipe.create(req.body, {
+      include: [
+        {
+          //association: db.Ingredients,
+          model: db.Ingredients,
+          include: {
+            where: { id: db.Ingredients.id }
+          }
+        }]
+    }).then(function (recipe) {
       res.json(recipe);
     })
       .catch(err => {

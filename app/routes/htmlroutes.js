@@ -19,17 +19,21 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/assets/index.html"));
   });
 
-  // cms route loads cms.html
   app.get("/add-recipe ", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/assets/newrecipe.html"));
   });
 
   app.get("/app/public/assets/css/style.css", function (req, res) {
     res.sendFile(process.cwd() + "/app/public/assets/css/" + "style.css");
+    //Us/app/public/assets/css/style.css
+  });
+
+  app.get("/app/public/assets/images/img_0366.jpg", function (req, res) {
+    res.sendFile(process.cwd() + "/app/public/assets/images/" + "img_0366.jpg");
   });
   
-  app.get("/app/public/assets/js/main.js", function (req, res) {
-    res.sendFile(process.cwd() + "/app/public/assets/js/" + "main.js");
+  app.get("/app/public/assets/main.js", function (req, res) {
+    res.sendFile(process.cwd() + "/app/public/assets/" + "main.js");
   });
 
   // blog route loads blog.html
