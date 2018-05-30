@@ -40,36 +40,37 @@ module.exports = function (app) {
     let ings = (Object.keys(req.query));
     console.log(ings);
 
-    ings.forEach(function (name) {
-      const query = db.Ingredients.findAll({
-        where: {
-          name: name
-        },
-      }).then(function (results) {
-        console.log(results[0].dataValues.id)
-        for (let i = 0; i < results.length; i++) {
-          const query2 = db.Recipe.findAll({
-            include: [{
-              model: db.Ingredients,
-              through: {
-                attributes: ['ingredient_id'],
-                where: { recipe_id: results[i].dataValues.id }
-              },
-            }]
-          }).then((recipes) => {
-            // console.log(JSON.stringify(recipes, 2, null));
-            finalData.push(recipes);
-            console.log("final recipes array " + JSON.stringify(finalData));
-            console.log("----------------");
-            res.json(recipes);
-            return recipes;
-            //promises.push(query2);
-          })
-        }
-      });
-    });
-
+    // ings.forEach(function (name) {
+    //   const query = db.Ingredients.findAll({
+    //     where: {
+    //       name: name
+    //     },
+    //   }).then(function (results) {
+    //console.log(results[0].dataValues.id)
+    for (let i = 0; i < req.query.length; i++) {
+      const query = new Promise(
+        db.Recipe.findAll({
+          include: [{
+            model: db.Ingredients,
+            through: {
+              attributes: ['ingredient_id'],
+              where: { recipe_id: req.params.id }
+            },
+          }]
+        }).then((recipes) => {
+          // console.log(JSON.stringify(recipes, 2, null));
+          finalData.push(recipes);
+          console.log("final recipes array " + JSON.stringify(finalData));
+          console.log("----------------");
+          res.json(recipes);
+          return recipes;
+        })
+      )
+    }
   });
+  //   });
+
+  // });
 
   // POST route for saving a new todo. We can create todo with the data in req.body
   app.post("/api/recipe", function (req, res) {
@@ -83,7 +84,6 @@ module.exports = function (app) {
     db.Recipe.create(req.body,
       { include: { model: db.Ingredients } })
       .then(function (recipe) {
-
         res.json(recipe);
       }).catch(err => {
         console.log(err);

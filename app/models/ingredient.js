@@ -1,6 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
   const Ingredient = sequelize.define("Ingredients", {
-    name: DataTypes.STRING,
+    name: {type:DataTypes.STRING,
+    unique:true},
     category: DataTypes.STRING,
     important: DataTypes.BOOLEAN
   }, {
