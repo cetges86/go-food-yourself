@@ -3,13 +3,14 @@ $(document).ready(function () {
   $.get("/api/ingredients", function (data) {
 
     console.log(data);
-    //TRAVIS CHECK THIS OUT!
+    
     for (var i = 0; i < data.length; i++) {
       category = data[i].category;
       if (category === "Protein") {
         $('#ing').append(`
           <option value="${i+1}">${data[i].name}</option>`);
       };
+
       if (category === "Dairy") {
         $('#dairy').append(`
         <option value="${i+1}">${data[i].name}</option>`);
