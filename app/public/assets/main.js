@@ -34,10 +34,16 @@ $(document).ready(function () {
 
   $('.submit').on('click', function (event) {
     event.preventDefault();
+    $('select').formSelect();
+    let dairy = $('#dairy').val()
+    let protein = $('#ing').val()
+    let seasoning = $('#seasoning').val()
+    let grains = $('#grains').val()
+    let produce = $('#produce').val()
 
-    let ings = [{ name: "Cheese" }, { name: "Pasta Sauce" }, { name: "Rice" }];
-
+    let ings = [dairy.concat(protein).concat(seasoning).concat(grains).concat(produce)];
     console.log(ings)
+
     $.get("/search/", ings).
       then(function (res) {
         console.log(res)
