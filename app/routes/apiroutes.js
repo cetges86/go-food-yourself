@@ -78,7 +78,7 @@ module.exports = function (app) {
 
     console.log(req.body);
     const ingredients = req.body.Ingredients;
-    console.log(ingredients)
+    //console.log(ingredients)
 
     db.Recipe.create(req.body, {
       include: [
