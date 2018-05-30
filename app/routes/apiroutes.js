@@ -68,7 +68,7 @@ module.exports = function (app) {
         }
       });
     });
-    
+
   });
 
   // POST route for saving a new todo. We can create todo with the data in req.body
@@ -80,19 +80,12 @@ module.exports = function (app) {
     const ingredients = req.body.Ingredients;
     //console.log(ingredients)
 
-    db.Recipe.create(req.body, {
-      include: [
-        {
-          //association: db.Ingredients,
-          model: db.Ingredients,
-          include: {
-            where: { id: db.Ingredients.id }
-          }
-        }]
-    }).then(function (recipe) {
-      res.json(recipe);
-    })
-      .catch(err => {
+    db.Recipe.create(req.body,
+      { include: { model: db.Ingredients } })
+      .then(function (recipe) {
+
+        res.json(recipe);
+      }).catch(err => {
         console.log(err);
       });
 
