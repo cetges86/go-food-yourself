@@ -44,12 +44,21 @@ $(document).ready(function () {
     let ings = [dairy.concat(protein).concat(seasoning).concat(grains).concat(produce)];
     console.log(ings)
 
-    $.get("/search/", ings).
+    const reqObj = {
+      id: ings
+    }
+
+    $.get("/search/", reqObj).
       then(function (res) {
         console.log(res)
-        $('#results').append("<h1> " + res[0].name + "</h1>")
-        $('#results').append("<h1> " + res[1].name + "</h1>")
-        $('#results').append("<h1> " + res[2].name + "</h1>")
+      
+        for(let i = 0; i < res.length; i++){
+          if (res[i].Ingredients.length != 0){
+            $('#results').append("<h1> Recipe Name: " + res[i].name + "</h1>")
+            $('#results').append("<h4> Number of Ingredients you have: " + res[i].Ingredients.length + "</h4>")
+
+          }
+        }
       })
 
   })

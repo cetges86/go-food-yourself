@@ -34,11 +34,9 @@ module.exports = function (app) {
 
   app.get("/search", function (req, res) {
     //req.body is our object with our form data, stored in ingredients array
-    const promises = []
-    let results = [];
-    let finalData = [];
-    let ings = (Object.keys(req.query));
-    console.log(ings);
+      //let ings = (Object.keys(req.query));
+
+    console.log(req.query)
 
     // ings.forEach(function (name) {
     //   const query = db.Ingredients.findAll({
@@ -47,27 +45,28 @@ module.exports = function (app) {
     //     },
     //   }).then(function (results) {
     //console.log(results[0].dataValues.id)
-    for (let i = 0; i < req.query.length; i++) {
-      const query = new Promise(
+    for (let i = 0; i < req.query.id.length; i++) {
+      const query = 
         db.Recipe.findAll({
           include: [{
             model: db.Ingredients,
             through: {
               attributes: ['ingredient_id'],
-              where: { recipe_id: req.params.id }
+              where: { recipe_id: req.query.id[i] }
             },
           }]
         }).then((recipes) => {
-          // console.log(JSON.stringify(recipes, 2, null));
-          finalData.push(recipes);
-          console.log("final recipes array " + JSON.stringify(finalData));
+
+          console.log("final recipes array " + JSON.stringify(recipes));
           console.log("----------------");
           res.json(recipes);
           return recipes;
         })
-      )
+      
     }
   });
+
+
   //   });
 
   // });
