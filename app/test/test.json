@@ -1,0 +1,44 @@
+ {
+    "name": "Chicken Bowl",
+    "numberOfIng": "6",
+    "link": "https://chefsavvy.com/california-grilled-cheese/",
+    "Ingredients":[{
+    	"name":"Chicken Breast",
+    	"category":"Protein",
+    	"important":true
+    	},
+		{
+		"name":"Rice",
+    	"category":"Grains",
+    	"important":true
+			
+		},
+    	{
+    		"name":"Beans",
+    	"category":"Proteins",
+    	"important":true
+    		
+    	},
+    	
+    	{
+    		"name":"Cheese",
+    	"category":"Dairy",
+    	"important":true
+    		
+    	},
+    	{
+    		"name":"Cilantro",
+    	"category":"Sauces/Condiments/Seasonings",
+    	"important":false
+    		
+    	},
+    	{
+    		"name":"Green Bell Pepper",
+    	"category":"Produce",
+    	"important":true
+    		
+    	}
+    	]
+}
+
+
