@@ -34,7 +34,7 @@ module.exports = function (app) {
 
   app.get("/search", function (req, res) {
     //req.body is our object with our form data, stored in ingredients array
-      //let ings = (Object.keys(req.query));
+    //let ings = (Object.keys(req.query));
 
     console.log(req.query)
 
@@ -46,7 +46,7 @@ module.exports = function (app) {
     //   }).then(function (results) {
     //console.log(results[0].dataValues.id)
     for (let i = 0; i < req.query.id.length; i++) {
-      const query = 
+      const query =
         db.Recipe.findAll({
           include: [{
             model: db.Ingredients,
@@ -62,7 +62,6 @@ module.exports = function (app) {
           res.json(recipes);
           return recipes;
         })
-      
     }
   });
 
@@ -78,18 +77,52 @@ module.exports = function (app) {
 
     console.log(req.body);
     const ingredients = req.body.Ingredients;
-    //console.log(ingredients)
+    console.log(ingredients)
 
-    db.Recipe.create(req.body,
-      { include: { model: db.Ingredients } })
+    
+    let recipe_ing = []
+    
+    ingredients.forEach(ing => {
+      db.Ingredients.findOrCreate({ where: { name: ing.name, category: ing.category, important:ing.important } })
+      .then((ingredients) => {
+        console.log("promise results: " + JSON.stringify(ingredients));
+        recipe_ing.push(ingredients)
+        createRecipe(ingredients);
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    });
+    
+    const recipe_components = {
+      name: req.body.name,
+      numberOfIng: req.body.numberOfIng,
+      link: req.body.link,
+      Ingredients: recipe_ing
+    }
+    //**working sequelize query to create recipe**
+    createRecipe = () => 
+    
+    db.Recipe.create(recipe_components,
+      { include: { model: db.Ingredients } }
+    )
       .then(function (recipe) {
         res.json(recipe);
+
       }).catch(err => {
         console.log(err);
       });
 
+    //**TEST STUFF */
+    // ingredients.forEach(ing => {
+    //   db.Ingredients.find({ where: { name: ing.name } }).on('success', function (recipe) {
+    //     db.Recipe.find({ where: { id: req.body.id } }).on('success', function (addIng) {
+    //       recipe.setIngredients([addIng]);
+    //     });
+    //   });
+    // });
+    //});
   });
-
   // DELETE route for deleting todos. We can get the id of the todo to be deleted from
   // req.params.id
   app.delete("/api/recipe/:id", function (req, res) {
