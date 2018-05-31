@@ -32,41 +32,44 @@ module.exports = function (app) {
     })
   });
 
-  app.get("/:name", function (req, res) {
+  app.get("/search", function (req, res) {
     //req.body is our object with our form data, stored in ingredients array
+      //let ings = (Object.keys(req.query));
 
-    //[ingredient names]
-    let ings = req.body.name;
-    let ids = [];
+    console.log(req.query)
 
-    console.log(ings);
+    // ings.forEach(function (name) {
+    //   const query = db.Ingredients.findAll({
+    //     where: {
+    //       name: name
+    //     },
+    //   }).then(function (results) {
+    //console.log(results[0].dataValues.id)
+    for (let i = 0; i < req.query.id.length; i++) {
+      const query = 
+        db.Recipe.findAll({
+          include: [{
+            model: db.Ingredients,
+            through: {
+              attributes: ['ingredient_id'],
+              where: { recipe_id: req.query.id[i] }
+            },
+          }]
+        }).then((recipes) => {
 
-    ings.forEach(function (name) {
-      db.Ingredients.findAll({
-        where: {
-          name: name
-        }
-      }).then(function (id) {
-        ids.push(id);
-      })
-    }).then(() => {
-      ids.forEach(function (ingId) {
-        db.association.findAll(
-          {
-            where: {
-              ingId: db.Recipe.id
-            }
-          }
-        ).then((results) => {
-          res.json(results)
+          console.log("final recipes array " + JSON.stringify(recipes));
+          console.log("----------------");
+          res.json(recipes);
+          return recipes;
         })
-      })
+      
     }
-    //ids = [1, 4, 5]
-
-
-    )
   });
+
+
+  //   });
+
+  // });
 
   // POST route for saving a new todo. We can create todo with the data in req.body
   app.post("/api/recipe", function (req, res) {
@@ -75,21 +78,13 @@ module.exports = function (app) {
 
     console.log(req.body);
     const ingredients = req.body.Ingredients;
-    console.log(ingredients)
+    //console.log(ingredients)
 
-    db.Recipe.create(req.body, {
-      include: [
-        {
-          //association: db.Ingredients,
-          model: db.Ingredients,
-          include: {
-            where: { id: db.Ingredients.id }
-          }
-        }]
-    }).then(function (recipe) {
-      res.json(recipe);
-    })
-      .catch(err => {
+    db.Recipe.create(req.body,
+      { include: { model: db.Ingredients } })
+      .then(function (recipe) {
+        res.json(recipe);
+      }).catch(err => {
         console.log(err);
       });
 
