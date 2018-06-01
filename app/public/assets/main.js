@@ -44,7 +44,11 @@ $(document).ready(function () {
     let ings = [dairy.concat(protein).concat(seasoning).concat(grains).concat(produce)];
     console.log(ings)
 
-    $.get("/search/", ings).
+    let reqObj = {
+      id: ings
+    }
+
+    $.get("/search/", reqObj).
       then(function (res) {
         console.log(res)
         $('#results').append("<h1> " + res[0].name + "</h1>")
