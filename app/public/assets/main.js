@@ -1,4 +1,7 @@
 $(document).ready(function () {
+  $('.parallax').parallax();
+});
+//  parallax initilization with Jquery
 
   $.get("/api/ingredients", function (data) {
 
@@ -62,5 +65,3 @@ $(document).ready(function () {
       })
 
   })
-
-});
