@@ -121,6 +121,8 @@ module.exports = function (app) {
               return Promise.all(ingredientPromises)
                 .then(() => {
                   res.json(recipe);
+                }).catch(err => {
+                  console.log(err);
                 });
             })
             .catch(err => {
@@ -128,16 +130,6 @@ module.exports = function (app) {
             });
         }
       })
-      // db.Recipe.findOrCreate({
-      //   where: { name: recipe_components.name, numberOfIng: recipe_components.numberOfIng, link: recipe_components.link, Ingredients: recipe_components.Ingredients.map(x => x.id)},
-      //   include: { model: db.Ingredients }
-      // })
-      //   .then(function (recipe) {
-      //     console.log(recipe);
-
-      //   }).catch(err => {
-      //     console.log(err);
-      //   });
     }
   });
   // DELETE route for deleting todos. We can get the id of the todo to be deleted from
@@ -151,18 +143,5 @@ module.exports = function (app) {
     }).then(() => {
       res.end();
     })
-  });
-
-  // PUT route for updating todos. We can get the updated todo data from req.body
-  app.put("/api/recipe", function (req, res) {
-    db.Recipe.update({
-      //needs to be changed for recipe data
-      text: req.body.text,
-      complete: req.body.complete
-    }, {
-        where: { id: req.body.id }
-      }).then(() => {
-        res.end();
-      })
   });
 };
