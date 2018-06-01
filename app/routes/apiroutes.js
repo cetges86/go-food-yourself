@@ -73,11 +73,13 @@ module.exports = function (app) {
     let recipe_ing = []
     const promises = [];
 
+    //checking if ing exist, and if not, creating new ing entries
     ingredients.forEach(ing => {
       const promise = db.Ingredients.findOrCreate({ where: { name: ing.name, category: ing.category, important: ing.important }, raw: true })
       promises.push(promise);
     });
 
+    //creates a new array of the ids of the ingredients "[4, 12, 35]"
     Promise.all(promises).then(ingredients => {
       const ingredientIds = ingredients.map(x => {
         console.log(x);
@@ -103,13 +105,12 @@ module.exports = function (app) {
         where: { name: recipe_components.name, numberOfIng: recipe_components.numberOfIng, link: recipe_components.link}
       }).then(recipe => {
         if (recipe) {
-          return res.json({err: 'Alr'})
+          return res.json({err: 'Already'})
         } else {
           db.Recipe.create(recipe_components, {include: {model: db.Ingredients}})
             .then(recipe => {
               const ingredientPromises = [];
               ingredientIds.forEach(id => {
-                //(project, { through: { status: 'started' }})
                 const promise = recipe.addIngredient(id, {
                   through: {id: id}
                 });
@@ -138,18 +139,6 @@ module.exports = function (app) {
       //     console.log(err);
       //   });
     }
-    //**working sequelize query to create recipe**
-
-
-    //**TEST STUFF */
-    // ingredients.forEach(ing => {
-    //   db.Ingredients.find({ where: { name: ing.name } }).on('success', function (recipe) {
-    //     db.Recipe.find({ where: { id: req.body.id } }).on('success', function (addIng) {
-    //       recipe.setIngredients([addIng]);
-    //     });
-    //   });
-    // });
-    //});
   });
   // DELETE route for deleting todos. We can get the id of the todo to be deleted from
   // req.params.id
