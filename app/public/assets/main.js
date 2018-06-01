@@ -1,8 +1,9 @@
 $(document).ready(function () {
+  let ingredients = [];
   $('.parallax').parallax();
 
   $.get("/api/ingredients", function (data) {
-
+    ingredients = data;
     console.log(data);
 
     for (var i = 0; i < data.length; i++) {
@@ -24,7 +25,7 @@ $(document).ready(function () {
         $('#grains').append(`
         <option value="${data[i].id}">${data[i].name}</option>`);
       };
-      if (category === "Spices/Seasoning/Condiments") {
+      if (category === "Sauces/Condiments/Seasonings") {
         $('#seasoning').append(`
         <option value="${data[i].id}">${data[i].name}</option>`);
       };
@@ -73,51 +74,54 @@ $(document).ready(function () {
     event.preventDefault();
     $('select').formSelect();
 
-    $.get("/api/ingredients", function (data) {
-      let ingredients = data;
-    })
-
     let dairy = $('#dairy').val()
     let protein = $('#ing').val()
     let seasoning = $('#seasoning').val()
     let grains = $('#grains').val()
     let produce = $('#produce').val()
 
-    let ings = [dairy.concat(protein).concat(seasoning).concat(grains).concat(produce)];
-    console.log(ings)
+    let ings = dairy.concat(protein).concat(seasoning).concat(grains).concat(produce);
+    console.log("ing " + ings)
 
     let name = $('#name').val();
     let numberOfIng = $('#numberOfIng').val();
     let link = $('#link').val();
 
     ingArray = [];
-    ings.forEach(ing => {
-      let recipe_ing = {
-        name: ing.name,
-        category: ing.category,
-        important: ing.important
+    buildIngArray = (ings) => {
+      for (i = 0; i < ings.length; i++) {
+        console.log(ings);
+        let recipe_ing = {
+          name: ingredients[ings[i]].name,
+          category: ingredients[ings[i]].category,
+          important: ingredients[ings[i]].important
+        }
+        
+        ingArray.push(recipe_ing);
+        console.log("ing " + JSON.stringify(ingArray))
       }
-
-      ingArray.push(recipe_ing);
-
-    });
-
-    const reqObj = {
-      name: name,
-      numberOfIng: numberOfIng,
-      link: link,
-      Ingredients: ingArray
     }
+    
+    buildIngArray(ings)
 
-    console.log(reqObj);
+    submitRecipe = (ingArray) => {
+      const reqObj = {
+        name: name,
+        numberOfIng: numberOfIng,
+        link: link,
+        Ingredients: ingArray
+      }
+  
+      console.log("post obj" + JSON.stringify(reqObj));
+  
+      $.post("/api/recipe", reqObj)
+        .then(function (res) {
+          console.log(res);
+        })
 
-    $.post("/api/recipe", reqObj)
-      .then(function(res) {
-        console.log(res);
-      })
+    }
+    submitRecipe(ingArray);
 
-
-
-  })
-
+  });
 });
+
