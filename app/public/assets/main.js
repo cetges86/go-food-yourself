@@ -48,6 +48,7 @@ $(document).ready(function () {
     let ings = [dairy.concat(protein).concat(seasoning).concat(grains).concat(produce)];
     console.log(ings)
 
+
     const reqObj = {
       id: ings
     }
