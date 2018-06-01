@@ -14,18 +14,16 @@ module.exports = function(app) {
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
-  // index route loads view.html
   app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/assets/index.html"));
   });
 
-  app.get("/add-recipe ", function(req, res) {
+  app.get("/recipe", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/assets/newrecipe.html"));
   });
 
   app.get("/app/public/assets/css/style.css", function (req, res) {
     res.sendFile(process.cwd() + "/app/public/assets/css/" + "style.css");
-    //Us/app/public/assets/css/style.css
   });
 
   app.get("/app/public/assets/images/img_0366.jpg", function (req, res) {
@@ -34,16 +32,6 @@ module.exports = function(app) {
   
   app.get("/app/public/assets/main.js", function (req, res) {
     res.sendFile(process.cwd() + "/app/public/assets/" + "main.js");
-  });
-
-  // blog route loads blog.html
-//   app.get("/blog", function(req, res) {
-//     res.sendFile(path.join(__dirname, "../public/blog.html"));
-//   });
-
-  // authors route loads author-manager.html
-  app.get("/authors", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/author-manager.html"));
   });
 
 };
