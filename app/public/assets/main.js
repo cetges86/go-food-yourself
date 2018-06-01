@@ -1,9 +1,6 @@
 $(document).ready(function () {
   $('.parallax').parallax();
 
-  //  parallax initilization with Jquery
-
-
   $.get("/api/ingredients", function (data) {
 
     console.log(data);
@@ -39,6 +36,8 @@ $(document).ready(function () {
   $('.submit').on('click', function (event) {
     event.preventDefault();
     $('select').formSelect();
+
+    console.log("ran");
     let dairy = $('#dairy').val()
     let protein = $('#ing').val()
     let seasoning = $('#seasoning').val()
@@ -53,7 +52,9 @@ $(document).ready(function () {
       id: ings
     }
 
-    $.get("/search/", reqObj).
+    console.log(JSON.stringify(reqObj));
+
+    $.get("/search", reqObj).
       then(function (res) {
         console.log(res)
 
@@ -118,4 +119,5 @@ $(document).ready(function () {
 
 
   })
+
 });
