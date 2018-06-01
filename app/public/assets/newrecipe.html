@@ -26,97 +26,131 @@
 <body>
   <!-- parallax -->
   <div id="index-banner" class="parallax-container">
-      <div class="section no-pad-bot">
-        <div class="container">
-          <br><br>
-          <h1 class="header center teal-text text-lighten-2">Go Food Yourself</h1>
-          <div class="row center">
-            <h5 class="header col s12 light">To get started select your ingredients below:</h5>
-          </div>
-          <br><br>
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br>
+        <br>
+        <h1 class="header center teal-text text-lighten-2">Go Food Yourself</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">To get started select your ingredients below:</h5>
         </div>
+        <br>
+        <br>
       </div>
-      <div class="parallax"><img src="https://blog.fitbit.com/wp-content/uploads/2017/04/4.5_Blog_ClearOutFridge.jpg" alt="Unsplashed background img 1"></div>
     </div>
-  
-        <div id="index-banner" class="parallax-container">
-          <div class="section no-pad-bot">
-            <div class="container">
-              <br><br>
+    <div class="parallax">
+      <img src="https://blog.fitbit.com/wp-content/uploads/2017/04/4.5_Blog_ClearOutFridge.jpg" alt="Unsplashed background img 1">
+
+    </div>
+  </div>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br>
+        <br>
+      </div>
+    </div>
+    <div class="parallax">
+      <img src="https://studybreaks.com/wp-content/uploads/2018/02/Food-Blog.jpg" alt="Unsplashed background img 1">
+    </div>
+  </div>
+
+
+  <div class="parallax">
+    <img src="images/backgroundapple.jpg" alt="Unsplashed background img 1">
+  </div>
+
+
+
+  <h1>Post a New Recipe!</h1>
+
+  <div class="container">
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="" id="name" type="text" class="validate">
+            <label for="name">Recipe</label>
+          </div>
+          <div class="input-field col s6">
+            <input placeholder="" id="numberOfIng" type="text" class="validate">
+            <label for="numberOfIng">Number of Ingredients</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input placeholder="" id="link" type="text" class="validate">
+            <label for="link">Recipe URL</label>
+          </div>
+        </div>
+
+        <br>
+        <br>
+
+        <!-- Protein input field -->
+        <div class="container">
+          <div class="input-field col s12">
+            <select multiple class="selected" id="ing">
+              <option value="" disabled selected>Choose A Protein</option>
+            </select>
+            <label>Protein Selection</label>
+
+          </div>
+        </div>
+        <!-- Dairy input field -->
+        <div class="container">
+          <div class="input-field col s12">
+            <select multiple class="selected" id="dairy">
+              <option value="" disabled selected>Select A Dairy Product</option>
+            </select>
+            <label>Dairy Selection</label>
+          </div>
+        </div>
+        <!-- Produce  -->
+        <div class="container">
+          <div class="input-field col s12">
+            <select multiple class="selected" id="produce">
+              <option value="" disabled selected>Select A Produce Product</option>
+            </select>
+            <label>Produce Selection</label>
+          </div>
+        </div>
+        <!-- Grains -->
+        <div class="container">
+          <div class="input-field col s12">
+            <select multiple class="selected" id="grains">
+              <option value="" disabled selected>Select A Grain Product</option>
+            </select>
+            <label>Grain Selection</label>
+          </div>
+        </div>
+        <!-- Spices/condiments/seasonings -->
+        <div class="container">
+          <div class="input-field col s12">
+            <select multiple class="selected" id="seasoning">
+              <option value="" disabled selected>Select A Spice or Condiment or Seasoning</option>
+            </select>
+            <label>Spices Condiments and Seasonings Selection</label>
+
+          </div>
+          <div class="row">
+            <button id = "post" class="btn">
+              Post
+            </button>
+
+            <div id="results">
+
             </div>
           </div>
-          <div class="parallax"><img src="https://studybreaks.com/wp-content/uploads/2018/02/Food-Blog.jpg" alt="Unsplashed background img 1"></div>
         </div>
-       
-
-    <div class="parallax">
-      <img src="images/backgroundapple.jpg" alt="Unsplashed background img 1">
-    </div>
-  </div> -->
 
 
-  <h1>Post a New Recipe</h1>
 
-  <!-- Autocomplete  -->
-  <!-- Protein input field -->
-  <div class="container">
-    <div class="input-field col s12">
-      <select multiple class="selected" id ="ing">
-          <option value="" disabled selected>Choose A Protein</option>
-      </select>
-      <label>Protein Selection</label>
-
-    </div>
-  </div>
-  <!-- Dairy input field -->
-  <div class="container">
-    <div class="input-field col s12">
-      <select multiple class="selected" id="dairy">
-          <option value="" disabled selected>Select A Dairy Product</option>
-      </select>
-      <label>Dairy Selection</label>
-    </div>
-  </div>
-  <!-- Produce  -->
-  <div class="container">
-    <div class="input-field col s12">
-      <select multiple class="selected" id="produce">
-          <option value="" disabled selected>Select A Produce Product</option>
-      </select>
-      <label>Produce Selection</label>
-    </div>
-  </div>
-  <!-- Grains -->
-  <div class="container">
-    <div class="input-field col s12">
-      <select multiple class="selected" id="grains">
-          <option value="" disabled selected>Select A Grain Product</option>
-      </select>
-      <label>Grain Selection</label>
-    </div>
-  </div>
-  <!-- Spices/condiments/seasonings -->
-  <div class="container">
-    <div class="input-field col s12">
-      <select multiple class="selected" id="seasoning">
-          <option value="" disabled selected>Select A Spice or Condiment or Seasoning</option>
-      </select>
-      <label>Spices Condiments and Seasonings Selection</label>
 
     </div>
   </div>
 
-
-
-  <div class="row">
-    <button class="btn submit">
-      Search
-    </button>
-
-    <div id="results">
-
-    </div>
-  </div>
 
 
 
