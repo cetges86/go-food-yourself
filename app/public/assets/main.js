@@ -83,8 +83,15 @@ $(document).ready(function () {
 
         for (let i = 0; i < res.length; i++) {
           if (res[i].Ingredients.length != 0) {
-            $('#results').append("<h1> Recipe Name: " + res[i].name + "</h1>")
+            let percent = res[i].length / res[i].numberOfIng
+            $('#results').append("<h2> Recipe Name: " + res[i].name + "</h2>")
             $('#results').append("<h4> Number of Ingredients you have: " + res[i].Ingredients.length + "</h4>")
+            $('#results').append(`<h6>  ${percent}% Complete! </h6>`)
+            res[i].Ingredients.forEach((j)=> {
+              $('#results').append("<h6> Ingredients matched: " + res[i].Ingredients[j] + "</h6>")
+
+            })
+            
 
           }
         }
