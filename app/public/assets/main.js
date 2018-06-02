@@ -115,8 +115,8 @@ $(document).ready(function () {
         console.log(ings);
         if (i == 0) {
           let recipe_ing = {
-            name: ingredients[ings[i]-20].name,
-            category: ingredients[ings[i]-20].category
+            name: ingredients[ings[i]-21].name,
+            category: ingredients[ings[i]-21].category
           }
 
           ingArray.push(recipe_ing);
@@ -124,8 +124,8 @@ $(document).ready(function () {
 
         } else {
           let recipe_ing = {
-            name: ingredients[ings[i]-20].name,
-            category: ingredients[ings[i]-20].category
+            name: ingredients[ings[i]-21].name,
+            category: ingredients[ings[i]-21].category
           }
 
           ingArray.push(recipe_ing);
