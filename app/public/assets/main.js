@@ -2,11 +2,27 @@ $(document).ready(function () {
   let ingredients = [];
   $('.parallax').parallax();
   $('#newIng').hide();
+  $('#headline').hide();
+  $('#dropdowns').css("opacity", 0)
+  $('.submit').css("opacity", 0)
+
 
   $('#addIng').on('click', function (event) {
     event.preventDefault();
     $('#newIng').show(1000);
   })
+
+  $("#dropdowns").waypoint(function () {
+    $('#dropdowns').addClass('bounceInUp');
+    $('#dropdowns').css("opacity", 1);
+  },
+    { offset: '65%' });
+
+  $(".submit").waypoint(function () {
+    $('.submit').addClass('lightSpeedIn');
+    $('.submit').css("opacity", 1)
+  },
+    { offset: '50%' });
 
   $('#submitIng').on('click', function (event) {
     let ingName = $('#ingName').val();
@@ -81,20 +97,24 @@ $(document).ready(function () {
       then(function (res) {
         console.log(res)
 
+        $('#dropdowns').hide(2000);
+        $('#headline').show(1000);
+
         for (let i = 0; i < res.length; i++) {
           if (res[i].Ingredients.length != 0) {
-            let percent = res[i].length / res[i].numberOfIng
-            $('#results').append("<h2> Recipe Name: " + res[i].name + "</h2>")
+            let percent = ((res[i].Ingredients.length / res[i].numberOfIng) * 100).toFixed(2);
+            
+            $('#results').append("<h3> Recipe Name: " + res[i].name + "</h3>")
             $('#results').append("<h4> Number of Ingredients you have: " + res[i].Ingredients.length + "</h4>")
             $('#results').append(`<h6>  ${percent}% Complete! </h6>`)
-            res[i].Ingredients.forEach((j)=> {
-              $('#results').append("<h6> Ingredients matched: " + res[i].Ingredients[j] + "</h6>")
-
-            })
-            
+            for (let j = 0; j < res[i].Ingredients.length; j++) {
+              $('#results').append("<h6> Matched Ingredient: " + res[i].Ingredients[j].name + "</h6>")
+            }
+            $('#results').append(`<h6>Full Recipe <a href="${res[i].link}">Link </a></h6>`)
 
           }
         }
+
       })
 
   })
@@ -122,8 +142,8 @@ $(document).ready(function () {
         console.log(ings);
         if (i == 0) {
           let recipe_ing = {
-            name: ingredients[ings[i]-21].name,
-            category: ingredients[ings[i]-21].category
+            name: ingredients[ings[i] - 21].name,
+            category: ingredients[ings[i] - 21].category
           }
 
           ingArray.push(recipe_ing);
@@ -131,8 +151,8 @@ $(document).ready(function () {
 
         } else {
           let recipe_ing = {
-            name: ingredients[ings[i]-21].name,
-            category: ingredients[ings[i]-21].category
+            name: ingredients[ings[i] - 21].name,
+            category: ingredients[ings[i] - 21].category
           }
 
           ingArray.push(recipe_ing);

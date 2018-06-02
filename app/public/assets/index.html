@@ -11,6 +11,8 @@
   <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
     crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" media="screen" href="/app/public/assets/css/style.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/app/public/assets/css/animate.css" />
+  <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
   <!--jquery-->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
@@ -20,6 +22,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <!-- main javascript file -->
   <script src="/app/public/assets/main.js"></script>
+  <script src="/app/public/assets/js/jquery.waypoints.js"></script>
 
 </head>
 
@@ -31,9 +34,9 @@
       <div class="container">
         <br>
         <br>
-        <h1 class="header center teal-text text-lighten-2">Go Food Yourself</h1>
+        <h1 class="header center teal-text text-lighten-2 animated bounceInDown">Go Food Yourself</h1>
         <div class="row center">
-          <h5 class="header col s12 light">To get started select your ingredients below:</h5>
+          <h5 class="center header col s12 light animated bounceInDown">To get started select your ingredients below:</h5>
         </div>
         <br>
         <br>
@@ -58,62 +61,65 @@
 
   <!-- Autocomplete  -->
   <!-- Protein input field -->
-  <div class="container">
-    <div class="input-field col s12">
-      <select multiple class="selected" id="ing">
-        <option value="" disabled selected>Choose A Protein</option>
-      </select>
-      <label>Protein Selection</label>
-
-    </div>
-  </div>
-  <!-- Dairy input field -->
-  <div class="container">
-    <div class="input-field col s12">
-      <select multiple class="selected" id="dairy">
-        <option value="" disabled selected>Select A Dairy Product</option>
-      </select>
-      <label>Dairy Selection</label>
-    </div>
-  </div>
-  <!-- Produce  -->
-  <div class="container">
-    <div class="input-field col s12">
-      <select multiple class="selected" id="produce">
-        <option value="" disabled selected>Select A Produce Product</option>
-      </select>
-      <label>Produce Selection</label>
-    </div>
-  </div>
-  <!-- Grains -->
-  <div class="container">
-    <div class="input-field col s12">
-      <select multiple class="selected" id="grains">
-        <option value="" disabled selected>Select A Grain Product</option>
-      </select>
-      <label>Grain Selection</label>
-    </div>
-  </div>
-  <!-- Spices/condiments/seasonings -->
-  <div class="container">
-    <div class="input-field col s12">
-      <select multiple class="selected" id="seasoning">
-        <option value="" disabled selected>Select A Spice or Condiment or Seasoning</option>
-      </select>
-      <label>Spices Condiments and Seasonings Selection</label>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <button class="btn submit">
-        Search
-      </button>
-
-      <div id="results">
+  <section id="dropdowns" class="animated">
+    <div class="container">
+      <div class="input-field col s12">
+        <select multiple class="selected" id="ing">
+          <option value="" disabled selected>Choose A Protein</option>
+        </select>
+        <label>Protein Selection</label>
 
       </div>
     </div>
+    <!-- Dairy input field -->
+    <div class="container">
+      <div class="input-field col s12">
+        <select multiple class="selected" id="dairy">
+          <option value="" disabled selected>Select A Dairy Product</option>
+        </select>
+        <label>Dairy Selection</label>
+      </div>
+    </div>
+    <!-- Produce  -->
+    <div class="container">
+      <div class="input-field col s12">
+        <select multiple class="selected" id="produce">
+          <option value="" disabled selected>Select A Produce Product</option>
+        </select>
+        <label>Produce Selection</label>
+      </div>
+    </div>
+    <!-- Grains -->
+    <div class="container">
+      <div class="input-field col s12">
+        <select multiple class="selected" id="grains">
+          <option value="" disabled selected>Select A Grain Product</option>
+        </select>
+        <label>Grain Selection</label>
+      </div>
+    </div>
+    <!-- Spices/condiments/seasonings -->
+    <div class="container">
+      <div class="input-field col s12">
+        <select multiple class="selected" id="seasoning">
+          <option value="" disabled selected>Select A Spice or Condiment or Seasoning</option>
+        </select>
+        <label>Spices Condiments and Seasonings Selection</label>
+      </div>
+    </div>
+    <div class="container">
+      <button class="btn submit animated">
+          Search
+        </button>
+    </div>
+  </section>
+  <div class="container">
+    <div class="row">
+      <h1 id="headline">Your Recipes:</h1>
+        <div id="results"></div>
+    </div>
   </div>
+
 
 </body>
 

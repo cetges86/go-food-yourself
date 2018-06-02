@@ -26,12 +26,19 @@ module.exports = function(app) {
     res.sendFile(process.cwd() + "/app/public/assets/css/" + "style.css");
   });
 
+  app.get("/app/public/assets/css/animate.css", function (req, res) {
+    res.sendFile(process.cwd() + "/app/public/assets/css/" + "animate.css");
+  });
+
   app.get("/app/public/assets/images/img_0366.jpg", function (req, res) {
     res.sendFile(process.cwd() + "/app/public/assets/images/" + "img_0366.jpg");
   });
   
   app.get("/app/public/assets/main.js", function (req, res) {
     res.sendFile(process.cwd() + "/app/public/assets/" + "main.js");
+  });
+  app.get("/app/public/assets/js/jquery.waypoints.js", function (req, res) {
+    res.sendFile(process.cwd() + "/app/public/assets/js/" + "jquery.waypoints.js");
   });
 
 };

@@ -1,3 +1,27 @@
 #newIng {
     display:hidden;
 }
+
+h1 {
+    font-family: 'Bungee', cursive;
+    font-weight: bold;
+    font-size: 5em;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+.header {
+    background-color:rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 15px;
+}
+
+h5 {
+    font-weight: bold;
+
+}
+
+#dropdowns {
+    padding:20px;
+}
