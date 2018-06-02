@@ -2,7 +2,8 @@
   "name": "go-food-yourself",
   "version": "1.0.0",
   "engines": {
-    "node": "8.11.1"
+    "node": "8.11.1",
+    "npm": "5.6.x"
   },
   "description": "dependencies",
   "main": "server.js",
