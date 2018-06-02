@@ -9,7 +9,7 @@
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
     crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" media="screen" href="/app/public/assets/css/style.css" />
+  <!-- <link rel="stylesheet" type="text/css" media="screen" href="/app/public/assets/css/style.css" /> -->
   <!--jquery-->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
@@ -20,6 +20,8 @@
   <!-- main javascript file -->
 
   <script src="/app/public/assets/main.js"></script>
+  <!-- <script src="main.js"></script> -->
+
 
 </head>
 
@@ -55,10 +57,10 @@
       <img src="https://studybreaks.com/wp-content/uploads/2018/02/Food-Blog.jpg" alt="Unsplashed background img 1">
     </div>
   </div>
-  
-  <h1>Post a New Recipe!</h1>
+
 
   <div class="container">
+    <h1>Post a New Recipe!</h1>
     <div class="row">
       <form class="col s12">
         <div class="row">
@@ -127,12 +129,42 @@
             <label>Spices Condiments and Seasonings Selection</label>
 
           </div>
+
           <div class="row">
-            <button id = "post" class="btn">
+            <button id="addIng" class="btn">+ New Ingredient</button>
+            <div id="newIng">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input placeholder="" id="ingName" type="text" class="validate">
+                    <label for="name">Name</label>
+                  </div>
+                  <div class="input-field col s6">
+                      <select id="ingCategory">
+                          <option value="" disabled selected>Select A Category</option>
+                          <option value="Dairy">Dairy</option>
+                          <option value="Protein">Protein</option>
+                          <option value="Produce">Produce</option>
+                          <option value="Grains">Grains</option>
+                          <option value="Sauces/Condiments/Seasonings">Sauces/Condiments/Seasonings</option>
+                        </select>
+                    <label for="ingCategory">Category</label>
+                  </div>
+                </div>
+                <button id="submitIng" class="btn">Add</button>
+                <div id="message"></div>
+              </form>
+            </div>
+          </div>
+
+          <div class="row">
+            <button id="post" class="btn">
               Post
             </button>
+            <div class="container">
+              <div id="results">
 
-            <div id="results">
+              </div>
 
             </div>
           </div>

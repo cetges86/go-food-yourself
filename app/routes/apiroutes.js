@@ -63,6 +63,16 @@ module.exports = function (app) {
 
   // });
 
+  app.post("/api/ingredients", function (req, res) {
+    db.Ingredients.findOrCreate(
+      { where: { name: req.body.name, category: req.body.category } }
+    ).then((ingredients) => {
+      res.json(ingredients)
+    }).catch((err) => {
+      console.log(err)
+    })
+  })
+
   app.post("/api/recipe", function (req, res) {
 
     console.log(req.body);
@@ -75,7 +85,7 @@ module.exports = function (app) {
 
     //checking if ing exist, and if not, creating new ing entries
     ingredients.forEach(ing => {
-      const promise = db.Ingredients.findOrCreate({ where: { name: ing.name, category: ing.category, important: ing.important }, raw: true })
+      const promise = db.Ingredients.findOrCreate({ where: { name: ing.name, category: ing.category }, raw: true })
       promises.push(promise);
     });
 
@@ -98,21 +108,21 @@ module.exports = function (app) {
 
       createRecipe(recipe_components, ingredientIds);
     });
-    
+
     createRecipe = (recipe_components, ingredientIds) => {
       console.log("recipe: " + JSON.stringify(recipe_components));
       db.Recipe.findOne({
-        where: { name: recipe_components.name, numberOfIng: recipe_components.numberOfIng, link: recipe_components.link}
+        where: { name: recipe_components.name, numberOfIng: recipe_components.numberOfIng, link: recipe_components.link }
       }).then(recipe => {
         if (recipe) {
-          return res.json({err: 'Already'})
+          return res.json({ err: 'Already' })
         } else {
-          db.Recipe.create(recipe_components, {include: {model: db.Ingredients}})
+          db.Recipe.create(recipe_components, { include: { model: db.Ingredients } })
             .then(recipe => {
               const ingredientPromises = [];
               ingredientIds.forEach(id => {
                 const promise = recipe.addIngredient(id, {
-                  through: {id: id}
+                  through: { id: id }
                 });
 
                 ingredientPromises.push(promise);
@@ -132,16 +142,5 @@ module.exports = function (app) {
       })
     }
   });
-  // DELETE route for deleting todos. We can get the id of the todo to be deleted from
-  // req.params.id
-  app.delete("/api/recipe/:id", function (req, res) {
 
-    db.Recipe.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(() => {
-      res.end();
-    })
-  });
 };
