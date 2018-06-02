@@ -4,8 +4,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       unique: true
     },
-    category: DataTypes.STRING,
-    important: DataTypes.BOOLEAN
+    category: DataTypes.STRING
   }, {
       timestamps: false
     });

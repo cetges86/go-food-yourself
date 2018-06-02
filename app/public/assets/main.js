@@ -1,6 +1,29 @@
 $(document).ready(function () {
   let ingredients = [];
   $('.parallax').parallax();
+  $('#newIng').hide();
+
+  $('#addIng').on('click', function (event) {
+    event.preventDefault();
+    $('#newIng').show(1000);
+  })
+
+  $('#submitIng').on('click', function (event) {
+    let ingName = $('#ingName').val();
+    let ingCategory = $('#ingCategory').val();
+
+    let newIng = {
+      name: ingName,
+      category: ingCategory
+    }
+
+    $.post("/api/ingredients", newIng)
+      .then(function (res) {
+        console.log(res);
+        $('#message').append(`<p>Ingredient Added!</p>
+            `)
+      })
+  })
 
   $.get("/api/ingredients", function (data) {
     ingredients = data;
@@ -38,7 +61,6 @@ $(document).ready(function () {
     event.preventDefault();
     $('select').formSelect();
 
-    console.log("ran");
     let dairy = $('#dairy').val()
     let protein = $('#ing').val()
     let seasoning = $('#seasoning').val()
@@ -91,17 +113,29 @@ $(document).ready(function () {
     buildIngArray = (ings) => {
       for (i = 0; i < ings.length; i++) {
         console.log(ings);
-        let recipe_ing = {
-          name: ingredients[ings[i]].name,
-          category: ingredients[ings[i]].category,
-          important: ingredients[ings[i]].important
+        if (i == 0) {
+          let recipe_ing = {
+            name: ingredients[ings[i]-1].name,
+            category: ingredients[ings[i]-1].category
+          }
+
+          ingArray.push(recipe_ing);
+          console.log("ing " + JSON.stringify(ingArray))
+
+        } else {
+          let recipe_ing = {
+            name: ingredients[ings[i]-1].name,
+            category: ingredients[ings[i]-1].category
+          }
+
+          ingArray.push(recipe_ing);
+          console.log("ing " + JSON.stringify(ingArray))
         }
-        
-        ingArray.push(recipe_ing);
-        console.log("ing " + JSON.stringify(ingArray))
+
+
       }
     }
-    
+
     buildIngArray(ings)
 
     submitRecipe = (ingArray) => {
@@ -111,9 +145,9 @@ $(document).ready(function () {
         link: link,
         Ingredients: ingArray
       }
-  
+
       console.log("post obj" + JSON.stringify(reqObj));
-  
+
       $.post("/api/recipe", reqObj)
         .then(function (res) {
           console.log(res);
