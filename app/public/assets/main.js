@@ -22,7 +22,7 @@ $(document).ready(function () {
     $('.submit').addClass('lightSpeedIn');
     $('.submit').css("opacity", 1)
   },
-    { offset: '50%' });
+    { offset: '60%' });
 
   $('#submitIng').on('click', function (event) {
     let ingName = $('#ingName').val();
