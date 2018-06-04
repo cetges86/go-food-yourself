@@ -59,10 +59,6 @@ module.exports = function (app) {
   });
 
 
-  //   });
-
-  // });
-
   app.post("/api/ingredients", function (req, res) {
     db.Ingredients.findOrCreate(
       { where: { name: req.body.name, category: req.body.category } }
