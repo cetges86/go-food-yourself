@@ -1,11 +1,11 @@
 $(document).ready(function () {
+  
   let ingredients = [];
   $('.parallax').parallax();
   $('#newIng').hide();
   $('#headline').hide();
   $('#dropdowns').css("opacity", 0)
   $('.submit').css("opacity", 0)
-
 
   $('#addIng').on('click', function (event) {
     event.preventDefault();
@@ -73,6 +73,7 @@ $(document).ready(function () {
     $('select').formSelect();
   });
 
+  // Submit click event
   $('.submit').on('click', function (event) {
     event.preventDefault();
     $('select').formSelect();
@@ -83,6 +84,7 @@ $(document).ready(function () {
     let grains = $('#grains').val()
     let produce = $('#produce').val()
 
+    // Store all potential ingredients in ings array
     let ings = [dairy.concat(protein).concat(seasoning).concat(grains).concat(produce)];
     console.log(ings)
 
@@ -100,6 +102,7 @@ $(document).ready(function () {
         $('#dropdowns').hide(2000);
         $('#headline').show(1000);
 
+        // Search through recipes database and display results
         for (let i = 0; i < res.length; i++) {
           if (res[i].Ingredients.length != 0) {
             let percent = ((res[i].Ingredients.length / res[i].numberOfIng) * 100).toFixed(2);
@@ -119,6 +122,7 @@ $(document).ready(function () {
 
   })
 
+  // Post a recipe
   $('#post').on('click', function (event) {
     event.preventDefault();
     $('select').formSelect();

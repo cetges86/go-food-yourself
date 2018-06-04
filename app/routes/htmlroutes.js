@@ -5,7 +5,6 @@
 // Dependencies
 // =============================================================
 const express = require("express");
-
 var path = require("path");
 
 // Routes
